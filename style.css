@@ -212,7 +212,7 @@ main { flex: 1; padding: 24px 24px 16px; display: flex; flex-direction: column; 
 .seo-help h2:not(:first-child) { margin-top: 10px; }
 .seo-help ol { margin: 0; padding-left: 1.5em; }
 .seo-help li { padding-left: 4px; }
-.seo-help p { max-width: 780px; color: var(--muted); font-size: 13px; }
+.seo-help p { width: 100%; color: var(--muted); font-size: 13px; }
 
 .palette {
   display: flex;
