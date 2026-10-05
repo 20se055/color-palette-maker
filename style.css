@@ -169,6 +169,35 @@ kbd {
 /* ===== パレット ===== */
 main { flex: 1; padding: 20px 24px 8px; display: flex; flex-direction: column; gap: 20px; }
 
+.intro,
+.seo-help {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+.intro {
+  text-align: center;
+  padding: 4px 12px 0;
+}
+.intro h2,
+.seo-help h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+.intro p {
+  margin-top: 8px;
+  line-height: 1.8;
+}
+.seo-help {
+  display: grid;
+  gap: 10px;
+  padding: 8px 20px 20px;
+  line-height: 1.8;
+}
+.seo-help h2:not(:first-child) { margin-top: 8px; }
+.seo-help ol { padding-left: 1.5em; }
+.seo-help p { color: var(--muted); font-size: 13px; }
+
 .palette {
   display: flex;
   height: min(52vh, 460px);

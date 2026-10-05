@@ -3,7 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カラーパレットメーカー</title>
+  <title>カラーパレット作成ツール｜無料の配色ジェネレーター</title>
+  <meta name="description" content="無料で使えるカラーパレット作成ツール。ベース色から補色・類似色・トライアドなどの配色を自動生成し、CSS変数・SCSS・JSON・PNGで保存できます。">
+  <meta name="keywords" content="カラーパレット,配色,カラーコード,色組み合わせ,配色ジェネレーター,デザインツール,CSSカラー">
+  <link rel="canonical" href="https://20se055.github.io/color-palette-maker/">
+  <meta name="theme-color" content="#ff8fb8">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="カラーパレットメーカー">
+  <meta property="og:title" content="カラーパレット作成ツール｜無料の配色ジェネレーター">
+  <meta property="og:description" content="ベース色から使いやすい配色を自動生成。カラーコードのコピー、CSS・SCSS・JSON出力、PNG保存に対応しています。">
+  <meta property="og:url" content="https://20se055.github.io/color-palette-maker/">
+  <meta property="og:image" content="https://20se055.github.io/color-palette-maker/favicon.svg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="カラーパレット作成ツール｜無料の配色ジェネレーター">
+  <meta name="twitter:description" content="ベース色から使いやすい配色を自動生成できる無料ツールです。">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +64,12 @@
   </header>
 
   <main>
+    <section class="intro" aria-labelledby="intro-title">
+      <h2 id="intro-title">無料で使えるカラーパレット作成ツール</h2>
+      <p>ベース色を選ぶだけで、Webサイトやアプリのデザインに使える配色を自動で作成できます。補色・類似色・トライアド・モノクロームなど、8種類の配色ルールに対応しています。</p>
+      <p class="hint">気に入ったカラーコードはクリックしてコピー。CSS変数、SCSS、JSON、配列への書き出しや、PNG画像・共有リンクでの保存もできます。</p>
+    </section>
+
     <section class="palette" id="palette" aria-label="パレット"></section>
 
     <section class="panel-grid">
@@ -121,6 +141,17 @@
         <div id="aiList" class="ai-list" aria-live="polite"></div>
       </div>
     </section>
+
+    <section class="seo-help" aria-labelledby="how-to-title">
+      <h2 id="how-to-title">カラーパレットの使い方</h2>
+      <ol>
+        <li>ベース色をカラーピッカーまたはカラーコードで指定します。</li>
+        <li>配色ルールと色の数を選び、「生成」を押します。</li>
+        <li>完成した配色をコピーして、Webサイトやグラフィックデザインに利用します。</li>
+      </ol>
+      <h2>配色をデザインに活用</h2>
+      <p>コントラスト比やシェードを確認しながら、背景色・文字色・ボタン色の組み合わせを試せます。登録不要で、保存したパレットはブラウザ内にだけ保存されます。</p>
+    </section>
   </main>
 
   <footer class="footer">
@@ -134,6 +165,30 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "カラーパレットメーカー",
+    "url": "https://20se055.github.io/color-palette-maker/",
+    "description": "ベース色から配色を自動生成できる無料のカラーパレット作成ツール。",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Web browser",
+    "inLanguage": "ja",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    },
+    "featureList": [
+      "補色・類似色・トライアドなど8種類の配色生成",
+      "CSS変数・SCSS・JSON・配列へのエクスポート",
+      "コントラスト比とシェードの確認",
+      "PNG保存と共有リンク"
+    ]
+  }
+  </script>
   <script src="palette-library.js"></script>
   <script src="presets.js"></script>
   <script src="app.js"></script>
