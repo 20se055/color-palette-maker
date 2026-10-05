@@ -519,7 +519,7 @@ addEventListener('keydown', (e) => {
 
 // ===== 初期化 =====
 if (loadFromHash()) { render(); refreshNameSuggestion(); }
-else regenerate();
+else regenerate({ newBase: true });
 renderAiPalettes();
 setBase(els.base.value);
 renderSaved();

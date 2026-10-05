@@ -181,6 +181,8 @@ main { flex: 1; padding: 24px 24px 16px; display: flex; flex-direction: column; 
 }
 .intro {
   text-align: center;
+  display: grid;
+  gap: 14px;
   padding: 24px 32px 26px;
 }
 .intro h2,
@@ -190,9 +192,11 @@ main { flex: 1; padding: 24px 24px 16px; display: flex; flex-direction: column; 
 }
 .intro p {
   max-width: 760px;
-  margin: 10px auto 0;
+  margin: 0 auto;
+  font-size: 14px;
   line-height: 1.9;
 }
+.intro .hint { margin-top: -2px; }
 .seo-help {
   display: grid;
   gap: 12px;
