@@ -199,8 +199,9 @@ main { flex: 1; padding: 24px 24px 16px; display: flex; flex-direction: column; 
 .intro .hint {
   width: 100%;
   margin-top: -2px;
-  font-size: 13px;
-  line-height: 1.8;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.9;
 }
 .seo-help {
   display: grid;
