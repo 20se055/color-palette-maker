@@ -167,17 +167,21 @@ kbd {
 .btn.primary:hover { filter: brightness(1.05); }
 
 /* ===== パレット ===== */
-main { flex: 1; padding: 20px 24px 8px; display: flex; flex-direction: column; gap: 20px; }
+main { flex: 1; padding: 24px 24px 16px; display: flex; flex-direction: column; gap: 24px; }
 
 .intro,
 .seo-help {
   max-width: 960px;
   margin: 0 auto;
   width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 .intro {
   text-align: center;
-  padding: 4px 12px 0;
+  padding: 24px 32px 26px;
 }
 .intro h2,
 .seo-help h2 {
@@ -185,18 +189,20 @@ main { flex: 1; padding: 20px 24px 8px; display: flex; flex-direction: column; g
   font-weight: 800;
 }
 .intro p {
-  margin-top: 8px;
-  line-height: 1.8;
+  max-width: 760px;
+  margin: 10px auto 0;
+  line-height: 1.9;
 }
 .seo-help {
   display: grid;
-  gap: 10px;
-  padding: 8px 20px 20px;
-  line-height: 1.8;
+  gap: 12px;
+  padding: 28px 36px 30px;
+  line-height: 1.9;
 }
-.seo-help h2:not(:first-child) { margin-top: 8px; }
-.seo-help ol { padding-left: 1.5em; }
-.seo-help p { color: var(--muted); font-size: 13px; }
+.seo-help h2:not(:first-child) { margin-top: 10px; }
+.seo-help ol { margin: 0; padding-left: 1.5em; }
+.seo-help li { padding-left: 4px; }
+.seo-help p { max-width: 780px; color: var(--muted); font-size: 13px; }
 
 .palette {
   display: flex;
@@ -433,7 +439,10 @@ main { flex: 1; padding: 20px 24px 8px; display: flex; flex-direction: column; g
 /* ===== スマホ ===== */
 @media (max-width: 720px) {
   .topbar { padding: 12px 16px; }
-  main { padding: 16px; }
+  main { padding: 16px; gap: 20px; }
+  .intro { padding: 20px 18px 22px; }
+  .intro h2, .seo-help h2 { font-size: 18px; }
+  .seo-help { padding: 22px 20px 24px; }
   .palette { flex-direction: column; height: auto; min-height: 0; }
   .swatch {
     flex-direction: row;
