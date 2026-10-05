@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラーパレットメーカー</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="logo"><span class="logo-dots"><i></i><i></i><i></i></span>カラーパレットメーカー</h1>
+
+    <div class="controls">
+      <div class="field">
+        <label for="baseHex">ベース色</label>
+        <div class="base-input">
+          <input type="color" id="baseColor" value="#ff8fb8" aria-label="ベース色を選択">
+          <input type="text" id="baseHex" value="#FF8FB8" maxlength="7" spellcheck="false" autocomplete="off"
+                 placeholder="#RRGGBB" title="16進数で入力 (例: #FF8FB8 / ff8fb8 / #F8B)">
+        </div>
+      </div>
+
+      <label class="field">
+        <span>配色ルール</span>
+        <select id="harmony">
+          <option value="analogous">類似色</option>
+          <option value="complementary" selected>補色</option>
+          <option value="triadic">トライアド</option>
+          <option value="tetradic">テトラード</option>
+          <option value="split">スプリット補色</option>
+          <option value="monochrome">モノクローム</option>
+          <option value="pastel">パステル</option>
+          <option value="random">ランダム</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>色の数 <output id="countLabel">5</output></span>
+        <input type="range" id="count" min="2" max="8" value="5">
+      </label>
+
+      <button class="btn primary" id="generate" title="Space キーでも生成できます">
+        生成 <kbd>Space</kbd>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="palette" id="palette" aria-label="パレット"></section>
+
+    <section class="panel-grid">
+      <div class="panel">
+        <h2>シェード</h2>
+        <p class="hint">各色を明るく・暗くしたバリエーションです。クリックで HEX をコピーできます。</p>
+        <div id="shades" class="shades"></div>
+      </div>
+
+      <div class="panel">
+        <h2>プレビュー</h2>
+        <p class="hint">パレットを UI に当てはめるとこんな感じ。</p>
+        <div id="preview" class="preview">
+          <div class="pv-card">
+            <div class="pv-header">
+              <span class="pv-avatar"></span>
+              <div>
+                <div class="pv-title">サンプルカード</div>
+                <div class="pv-sub">パレットのプレビュー</div>
+              </div>
+            </div>
+            <p class="pv-body">ボタンやバッジ、背景に色を割り当てると、配色の印象を確認できます。</p>
+            <div class="pv-tags"><span>タグ1</span><span>タグ2</span><span>タグ3</span></div>
+            <div class="pv-actions">
+              <button class="pv-btn">メインボタン</button>
+              <button class="pv-btn ghost">サブ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>エクスポート</h2>
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-format="css">CSS 変数</button>
+          <button class="tab" data-format="scss">SCSS</button>
+          <button class="tab" data-format="json">JSON</button>
+          <button class="tab" data-format="array">配列</button>
+        </div>
+        <pre id="exportCode" class="code"></pre>
+        <div class="row">
+          <button class="btn" id="copyExport">コードをコピー</button>
+          <button class="btn" id="copyLink">共有リンクをコピー</button>
+          <button class="btn" id="downloadPng">PNG で保存</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>自分のパレット</h2>
+        <p class="hint">名前を空のまま保存すると、薄く表示されている名前で保存されます。</p>
+        <div class="row">
+          <input type="text" id="paletteName" class="text-input" placeholder="パレット名" maxlength="30">
+          <button class="btn" id="suggestName" title="名前をおまかせで考える">おまかせ</button>
+          <button class="btn primary" id="save">保存</button>
+        </div>
+        <ul id="savedList" class="saved"></ul>
+      </div>
+
+      <div class="panel span-2">
+        <div class="panel-head">
+          <div>
+            <h2>ひらめきパレット</h2>
+            <p class="hint">クリックで読み込みます。気に入ったら「自分のパレット」に保存してね。</p>
+          </div>
+          <div class="row">
+            <button class="btn primary" id="shuffleAi">シャッフル</button>
+          </div>
+        </div>
+        <div id="aiList" class="ai-list" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <kbd>Space</kbd> 生成
+    鍵アイコンで色を固定
+    HEX をクリックでコピー
+    パレットアイコンで個別に色を変更
+  </footer>
+
+
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="palette-library.js"></script>
+  <script src="presets.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
