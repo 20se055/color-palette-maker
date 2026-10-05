@@ -190,12 +190,18 @@ main { flex: 1; padding: 24px 24px 16px; display: flex; flex-direction: column; 
   font-weight: 800;
 }
 .intro p {
-  max-width: 760px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
   font-size: 14px;
   line-height: 1.9;
 }
-.intro .hint { margin-top: -2px; }
+.intro .hint {
+  width: 100%;
+  margin-top: -2px;
+  font-size: 13px;
+  line-height: 1.8;
+}
 .seo-help {
   display: grid;
   gap: 12px;
