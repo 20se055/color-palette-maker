@@ -171,7 +171,6 @@ main { flex: 1; padding: 24px 24px 16px; display: flex; flex-direction: column; 
 
 .intro,
 .seo-help {
-  max-width: 960px;
   margin: 0 auto;
   width: 100%;
   background: var(--surface);

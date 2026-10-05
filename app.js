@@ -119,6 +119,7 @@ const els = {
 
 let colors = []; // { hex, locked }
 let exportFormat = 'css';
+let initialRender = true;
 
 // "#fff" / "fff" / "#FF8FB8" / "ff8fb8" を受け付けて "#ff8fb8" 形式にする。不正なら null
 function parseHex(text) {
@@ -209,7 +210,7 @@ function renderPanels() {
   renderShades();
   renderPreview();
   renderExport();
-  updateHash();
+  if (!initialRender) updateHash();
 }
 
 function renderSwatches() {
@@ -499,7 +500,10 @@ document.querySelectorAll('.tab').forEach((tab) => {
   });
 });
 $('#copyExport').addEventListener('click', () => copyText(exportText(), 'コードをコピーしました'));
-$('#copyLink').addEventListener('click', () => copyText(location.href, '共有リンクをコピーしました'));
+$('#copyLink').addEventListener('click', () => {
+  updateHash();
+  copyText(location.href, '共有リンクをコピーしました');
+});
 $('#downloadPng').addEventListener('click', downloadPng);
 $('#save').addEventListener('click', savePalette);
 $('#suggestName').addEventListener('click', () => {
@@ -520,6 +524,7 @@ addEventListener('keydown', (e) => {
 // ===== 初期化 =====
 if (loadFromHash()) { render(); refreshNameSuggestion(); }
 else regenerate({ newBase: true });
+initialRender = false;
 renderAiPalettes();
 setBase(els.base.value);
 renderSaved();
