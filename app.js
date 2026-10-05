@@ -50,6 +50,7 @@ function contrast(a, b) {
 }
 const DARK_TEXT = '#1D1A22';
 const textColorFor = (hex) => (contrast(hex, '#FFFFFF') >= contrast(hex, DARK_TEXT) ? '#FFFFFF' : DARK_TEXT);
+const LEGACY_DEFAULT_HASH = '#ff8fb8-8fffd6-fed7e5-d7fef0-f33f81';
 
 function mix(a, b, t) {
   const ca = hexToRgb(a);
@@ -342,6 +343,10 @@ function shareUrl() {
   return `${location.origin}${location.pathname}${hash}`;
 }
 function loadFromHash() {
+  if (location.hash.toLowerCase() === LEGACY_DEFAULT_HASH) {
+    history.replaceState(null, '', `${location.pathname}${location.search}`);
+    return false;
+  }
   const parts = location.hash.slice(1).split('-').filter((p) => /^[0-9a-f]{6}$/i.test(p));
   if (parts.length < 2) return false;
   colors = parts.slice(0, 8).map((p) => ({ hex: '#' + p.toUpperCase(), locked: false }));
