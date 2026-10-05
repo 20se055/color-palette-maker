@@ -119,7 +119,6 @@ const els = {
 
 let colors = []; // { hex, locked }
 let exportFormat = 'css';
-let initialRender = true;
 
 // "#fff" / "fff" / "#FF8FB8" / "ff8fb8" を受け付けて "#ff8fb8" 形式にする。不正なら null
 function parseHex(text) {
@@ -210,7 +209,6 @@ function renderPanels() {
   renderShades();
   renderPreview();
   renderExport();
-  if (!initialRender) updateHash();
 }
 
 function renderSwatches() {
@@ -339,9 +337,9 @@ function renderExport() {
 }
 
 // ===== URL 共有 =====
-function updateHash() {
+function shareUrl() {
   const hash = '#' + colors.map((c) => c.hex.slice(1).toLowerCase()).join('-');
-  history.replaceState(null, '', hash);
+  return `${location.origin}${location.pathname}${hash}`;
 }
 function loadFromHash() {
   const parts = location.hash.slice(1).split('-').filter((p) => /^[0-9a-f]{6}$/i.test(p));
@@ -501,8 +499,7 @@ document.querySelectorAll('.tab').forEach((tab) => {
 });
 $('#copyExport').addEventListener('click', () => copyText(exportText(), 'コードをコピーしました'));
 $('#copyLink').addEventListener('click', () => {
-  updateHash();
-  copyText(location.href, '共有リンクをコピーしました');
+  copyText(shareUrl(), '共有リンクをコピーしました');
 });
 $('#downloadPng').addEventListener('click', downloadPng);
 $('#save').addEventListener('click', savePalette);
@@ -524,7 +521,6 @@ addEventListener('keydown', (e) => {
 // ===== 初期化 =====
 if (loadFromHash()) { render(); refreshNameSuggestion(); }
 else regenerate({ newBase: true });
-initialRender = false;
 renderAiPalettes();
 setBase(els.base.value);
 renderSaved();
